@@ -6,14 +6,12 @@
                         <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
                             
-<?php                                        
-$ret=mysqli_query($con,"select tblservicerequest.ServiceNumber,tblservicerequest.ID as apid, tbluser.FullName,tblservicerequest.ServicerequestDate from  tblservicerequest inner join tbluser on tbluser.ID=tblservicerequest.UserId where tblservicerequest.AdminStatus is null");
-$num=mysqli_num_rows($ret);?>
+
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button"
                                    aria-haspopup="false" aria-expanded="false">
                                     <i class="fi-bell noti-icon" style="color:#fff"></i>
-                                    <span class="badge badge-danger badge-pill noti-icon-badge"><?php echo $num;?></span>
+                                    <span class="badge badge-danger badge-pill noti-icon-badge"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
 
@@ -24,9 +22,7 @@ $num=mysqli_num_rows($ret);?>
                                     </div>
 
                                     <div class="slimscroll" style="max-height: 230px;">
-<?php   
-if($num>0)    {                                 
-while ($row=mysqli_fetch_array($ret)) { ?>
+
 
 
 
@@ -34,10 +30,7 @@ while ($row=mysqli_fetch_array($ret)) { ?>
                                             <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i></div>
                                             <p class="notify-details">New Request Received <?php echo $row['ServiceNumber'];?><small class="text-muted">at <?php echo $row['ServicerequestDate'];?></small></p>
                                         </a>
-<?php }} else{ ?>
-<p align="center">No Request found</p>
 
-<?php } ?>
                                    
                                     </div>
 
@@ -51,13 +44,7 @@ while ($row=mysqli_fetch_array($ret)) { ?>
 
                             
 
-                            <?php
-$adid=$_SESSION['adid'];
-$ret=mysqli_query($con,"select AdminName from tbladmin where ID='$adid'");
-$row=mysqli_fetch_array($ret);
-$name=$row['AdminName'];
-
-?>
+                            
 
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
